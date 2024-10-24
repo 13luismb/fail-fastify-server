@@ -1,9 +1,9 @@
-"use strict";
+import { FastifyPluginAsync } from "fastify";
 
 let count = 0;
 
-module.exports = async function (fastify, opts) {
-  fastify.get("/", async function (request, reply) {
+const example: FastifyPluginAsync = async (fastify, _opts): Promise<void> => {
+  fastify.get("/", async function (_request, reply) {
     try {
       if (count === 3) {
         count = 0;
@@ -17,3 +17,5 @@ module.exports = async function (fastify, opts) {
     }
   });
 };
+
+export default example;
